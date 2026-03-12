@@ -22,7 +22,7 @@ export async function updateSession(request: NextRequest) {
     },
   });
 
-  const supabase = createServerClient(supabaseUrl, supabasePublishableKey, {
+  const supabase = createServerClient(supabaseUrl!, supabasePublishableKey!, {
     cookies: {
       getAll() {
         return request.cookies.getAll();
