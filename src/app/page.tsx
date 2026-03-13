@@ -80,10 +80,10 @@ export default async function HomePage() {
                 {primaryCta.label}
               </a>
               <a
-                href="#features"
+                href="#app-preview"
                 className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/80 transition hover:border-white/30 hover:text-white"
               >
-                Explore features
+                View app preview
               </a>
             </div>
             {!APP_STORE_URL.trim() ? (
@@ -97,30 +97,28 @@ export default async function HomePage() {
             <div className="absolute -left-6 -top-6 h-24 w-24 rounded-3xl bg-gradient-to-br from-pink-400/40 to-cyan-300/40 blur-2xl" />
             <div className="rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur">
               <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60">
-                <span>Japi preview</span>
-                <span>iOS</span>
+                <span>Japi</span>
+                <span>Toronto</span>
               </div>
-              <div className="mt-6 rounded-[28px] border border-white/10 bg-gradient-to-br from-white/5 via-white/10 to-white/5 p-6">
+
+              <div className="mt-6 rounded-[28px] border border-white/10 bg-gradient-to-br from-white/5 via-white/10 to-white/5 p-8">
                 <div className="space-y-4">
-                  <div className="h-4 w-24 rounded-full bg-white/20" />
-                  <div className="h-8 w-48 rounded-xl bg-gradient-to-r from-pink-400/60 via-fuchsia-400/60 to-cyan-300/60" />
-                  <div className="grid gap-3">
-                    {[
-                      "Curated Toronto vendors",
-                      "Pricing guidance",
-                      "Direct contact links",
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70"
-                      >
-                        <span className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-pink-400 to-cyan-300" />
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                  <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/60">
+                    Premium vendor catalog
+                  </span>
+
+                  <h3 className="text-2xl font-semibold leading-tight text-white">
+                    Discover vendors beautifully.
+                  </h3>
+
+                  <p className="max-w-md text-sm text-white/60">
+                    Explore cakes, snacks, decoration, face painting, and more
+                    — with pricing guidance and direct vendor details in one
+                    polished place.
+                  </p>
                 </div>
               </div>
+
               <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/60">
                 A premium catalog for parties, birthdays, and celebrations.
               </div>
@@ -128,29 +126,45 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="mt-20 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              title: "Discover beautifully",
-              copy: "Explore a refined directory of Toronto event vendors.",
-            },
-            {
-              title: "Pricing at a glance",
-              copy: "See helpful pricing guidance and package ranges.",
-            },
-            {
-              title: "Direct vendor details",
-              copy: "Quick links to Instagram, websites, and contact info.",
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
-            >
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-3 text-sm text-white/60">{item.copy}</p>
-            </div>
-          ))}
+        <section id="app-preview" className="mt-24 space-y-8">
+          <div className="space-y-3 text-center">
+            <p className="text-xs uppercase tracking-[0.35em] text-white/60">
+              App preview
+            </p>
+            <h2 className="text-3xl font-semibold sm:text-4xl">
+              See Japi in action.
+            </h2>
+            <p className="mx-auto max-w-2xl text-sm text-white/60 sm:text-base">
+              A polished catalog experience designed to make vendor discovery
+              feel simple, visual, and premium.
+            </p>
+          </div>
+
+          <div className="grid items-start gap-6 md:grid-cols-3">
+            {[
+              "/screens/japi-1.PNG",
+              "/screens/japi-2.PNG",
+              "/screens/japi-3.PNG",
+            ].map((src, index) => (
+              <div
+                key={src}
+                className={`overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-3 shadow-[0_30px_80px_-40px_rgba(236,72,153,0.35)] backdrop-blur ${
+                  index === 1 ? "md:-mt-4 md:scale-[1.03]" : ""
+                }`}
+              >
+                <div className="overflow-hidden rounded-[26px] border border-white/10 bg-black/20">
+                  <Image
+                    src={src}
+                    alt={`Japi screen ${index + 1}`}
+                    width={390}
+                    height={844}
+                    className="h-auto w-full object-cover"
+                    priority={index === 1}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section id="features" className="mt-24 space-y-10">
@@ -230,6 +244,31 @@ export default async function HomePage() {
               </a>
             </div>
           </div>
+        </section>
+
+        <section className="mt-20 grid gap-6 md:grid-cols-3">
+          {[
+            {
+              title: "Discover beautifully",
+              copy: "Explore a refined directory of Toronto event vendors.",
+            },
+            {
+              title: "Pricing at a glance",
+              copy: "See helpful pricing guidance and package ranges.",
+            },
+            {
+              title: "Direct vendor details",
+              copy: "Quick links to Instagram, websites, and contact info.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+            >
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <p className="mt-3 text-sm text-white/60">{item.copy}</p>
+            </div>
+          ))}
         </section>
 
         <section id="support" className="mt-24 grid gap-6 lg:grid-cols-2">
