@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import AdminShell from "@/components/admin/AdminShell";
 import AdminDashboard from "@/components/admin/AdminDashboard";
@@ -34,19 +35,18 @@ export default async function HomePage() {
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col px-6 pb-24 pt-10 sm:px-10">
         <header className="flex flex-wrap items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <span className="h-10 w-10 rounded-2xl bg-gradient-to-br from-pink-400 via-fuchsia-400 to-cyan-300 shadow-[0_0_40px_rgba(236,72,153,0.35)]" />
-            <div>
-              <p className="text-xs uppercase tracking-[0.4em] text-white/60">
-                Japi
-              </p>
-              <p className="text-sm text-white/80">iOS marketplace</p>
-            </div>
-          </div>
+          <a href="/" className="flex items-center transition hover:opacity-90">
+            <Image
+              src="/japi-logo.png"
+              alt="Japi"
+              width={140}
+              height={48}
+              priority
+              className="h-auto w-[120px] sm:w-[140px]"
+            />
+          </a>
+
           <nav className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.3em] text-white/70">
-            <a href="/" className="transition hover:text-white">
-              Home
-            </a>
             <a href="/support" className="transition hover:text-white">
               Support
             </a>
@@ -105,21 +105,19 @@ export default async function HomePage() {
                   <div className="h-4 w-24 rounded-full bg-white/20" />
                   <div className="h-8 w-48 rounded-xl bg-gradient-to-r from-pink-400/60 via-fuchsia-400/60 to-cyan-300/60" />
                   <div className="grid gap-3">
-                  {[
-                    "Curated Toronto vendors",
-                    "Pricing guidance",
-                    "Direct contact links",
-                  ].map(
-                    (item) => (
+                    {[
+                      "Curated Toronto vendors",
+                      "Pricing guidance",
+                      "Direct contact links",
+                    ].map((item) => (
                       <div
                         key={item}
                         className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70"
                       >
-                          <span className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-pink-400 to-cyan-300" />
-                          {item}
-                        </div>
-                      )
-                    )}
+                        <span className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-pink-400 to-cyan-300" />
+                        {item}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -210,20 +208,20 @@ export default async function HomePage() {
                 Coming soon
               </p>
               <h2 className="mt-3 text-2xl font-semibold">
-              Be first to try Japi.
-            </h2>
-            <p className="mt-2 text-sm text-white/60">
-              Early access invites are limited. Join the waitlist for the iOS
-              launch.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={primaryCta.href}
-              className="rounded-full bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-slate-900 shadow-[0_20px_60px_-30px_rgba(59,130,246,0.55)] transition hover:-translate-y-0.5"
-            >
-              {primaryCta.label}
-            </a>
+                Be first to try Japi.
+              </h2>
+              <p className="mt-2 text-sm text-white/60">
+                Early access invites are limited. Join the waitlist for the iOS
+                launch.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={primaryCta.href}
+                className="rounded-full bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-slate-900 shadow-[0_20px_60px_-30px_rgba(59,130,246,0.55)] transition hover:-translate-y-0.5"
+              >
+                {primaryCta.label}
+              </a>
               <a
                 href={`mailto:${SUPPORT_EMAIL}`}
                 className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/80 transition hover:border-white/30 hover:text-white"
@@ -271,7 +269,10 @@ export default async function HomePage() {
               throughout your browsing experience.
             </p>
           </div>
-          <div id="terms" className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          <div
+            id="terms"
+            className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+          >
             <h3 className="text-lg font-semibold">Terms</h3>
             <p className="mt-3 text-sm text-white/60">
               Transparent expectations for clients and vendors, written in
